@@ -68,6 +68,9 @@ async def get_status_checks():
 
 # Include the router in the main app
 app.include_router(api_router)
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/", StaticFiles(directory="frontend/public", html=True), name="static")
 
 app.add_middleware(
     CORSMiddleware,
